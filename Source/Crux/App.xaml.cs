@@ -12,7 +12,7 @@ namespace Crux
     /// <summary>
     ///     既定の Application クラスを補完するアプリケーション固有の動作を提供します。
     /// </summary>
-    internal sealed partial class App : Application
+    public sealed partial class App : Application
     {
         /// <summary>
         ///     単一アプリケーション オブジェクトを初期化します。これは、実行される作成したコードの
