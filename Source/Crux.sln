@@ -5,6 +5,29 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crux", "Crux\Crux.csproj", "{09157E44-307D-43BB-A497-943A9F74B606}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3782582E-CD5B-4338-B301-7C537CE3681A}"
+	ProjectSection(SolutionItems) = preProject
+		..\.gitattributes = ..\.gitattributes
+		..\.gitignore = ..\.gitignore
+		..\LICENSE = ..\LICENSE
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assemblies", "Assemblies", "{F3FC063C-29F5-4B2F-93ED-949740980DDE}"
+	ProjectSection(SolutionItems) = preProject
+		..\Assemblies\Mntone.Data.Amf.UWP.dll = ..\Assemblies\Mntone.Data.Amf.UWP.dll
+		..\Assemblies\Mntone.Data.Amf.UWP.lib = ..\Assemblies\Mntone.Data.Amf.UWP.lib
+		..\Assemblies\Mntone.Data.Amf.UWP.pdb = ..\Assemblies\Mntone.Data.Amf.UWP.pdb
+		..\Assemblies\Mntone.Data.Amf.winmd = ..\Assemblies\Mntone.Data.Amf.winmd
+		..\Assemblies\Mntone.Nico2.UWP.dll = ..\Assemblies\Mntone.Nico2.UWP.dll
+		..\Assemblies\Mntone.Nico2.UWP.pdb = ..\Assemblies\Mntone.Nico2.UWP.pdb
+		..\Assemblies\Mntone.Nico2.UWP.XML = ..\Assemblies\Mntone.Nico2.UWP.XML
+		..\Assemblies\Mntone.Rtmp.UWP.dll = ..\Assemblies\Mntone.Rtmp.UWP.dll
+		..\Assemblies\Mntone.Rtmp.UWP.lib = ..\Assemblies\Mntone.Rtmp.UWP.lib
+		..\Assemblies\Mntone.Rtmp.UWP.pdb = ..\Assemblies\Mntone.Rtmp.UWP.pdb
+		..\Assemblies\Mntone.Rtmp.winmd = ..\Assemblies\Mntone.Rtmp.winmd
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -36,5 +59,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F3FC063C-29F5-4B2F-93ED-949740980DDE} = {3782582E-CD5B-4338-B301-7C537CE3681A}
 	EndGlobalSection
 EndGlobal

@@ -30,7 +30,7 @@ namespace Crux
 
         protected override Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args)
         {
-            NavigationService.Navigate("HomeMain", null);
+            // NavigationService.Navigate("HomeMain", null);
             return Task.CompletedTask;
         }
 
