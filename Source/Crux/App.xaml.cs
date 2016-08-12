@@ -25,6 +25,7 @@ namespace Crux
         protected override UIElement CreateShell(Frame rootFrame)
         {
             var shell = Container.Resolve<AppShell>();
+            shell.SetContentFrame(rootFrame);
             return shell;
         }
 
