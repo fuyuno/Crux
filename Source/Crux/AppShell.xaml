@@ -4,10 +4,12 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       mc:Ignorable="d">
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <SplitView x:Name="RootSplitView">
+    <Grid x:Name="RootGrid"
+          Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <SplitView x:Name="RootSplitView"
+                   Margin="0,48,0,0">
             <SplitView.Pane>
-                <RelativePanel Margin="0,48,0,0">
+                <RelativePanel>
                     <RelativePanel.Resources>
                         <Style TargetType="Button">
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
