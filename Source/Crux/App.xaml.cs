@@ -4,9 +4,14 @@ using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
+using Crux.Services;
+using Crux.Services.Interfaces;
+
 using Microsoft.Practices.Unity;
 
 using Prism.Unity.Windows;
+
+using Reactive.Bindings;
 
 namespace Crux
 {
@@ -28,6 +33,19 @@ namespace Crux
             shell.SetContentFrame(rootFrame);
             return shell;
         }
+
+        #region Overrides of PrismApplication
+
+        protected override Task OnInitializeAsync(IActivatedEventArgs args)
+        {
+            UIDispatcherScheduler.Initialize();
+
+            Container.RegisterType<IAccountService, AccountService>(new ContainerControlledLifetimeManager());
+
+            return base.OnInitializeAsync(args);
+        }
+
+        #endregion
 
         protected override Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args)
         {
