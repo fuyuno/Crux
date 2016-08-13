@@ -38,14 +38,20 @@ namespace Crux
         {
             UIDispatcherScheduler.Initialize();
 
-            Container.RegisterType<IAccountService, AccountService>(new ContainerControlledLifetimeManager());
+            var accountService = new AccountService();
+            Container.RegisterInstance<IAccountService>(accountService, new ContainerControlledLifetimeManager());
 
+            await accountService.LoginAsync();
             await base.OnInitializeAsync(args);
         }
 
         protected override Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args)
         {
-            NavigationService.Navigate("Main", null);
+            var accountService = Container.Resolve<IAccountService>();
+            if (accountService.IsLoggedIn)
+                NavigationService.Navigate("Main", null);
+            else
+                NavigationService.Navigate("Login", null);
             return Task.CompletedTask;
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 
 using Windows.Security.Credentials;
@@ -15,6 +16,7 @@ namespace Crux.Services
         #region Implementation of IAccountService
 
         public NiconicoContext CurrentContext { get; private set; }
+        public bool IsLoggedIn => CurrentContext != null;
 
         public async Task LoginAsync(string mailAddress, string password)
         {
@@ -31,6 +33,34 @@ namespace Crux.Services
             {
                 var vault = new PasswordVault();
                 vault.Add(new PasswordCredential(CruxConstants.Key, mailAddress, password));
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+            }
+        }
+
+        public async Task LoginAsync()
+        {
+            try
+            {
+                var vault = new PasswordVault();
+                vault.RetrieveAll();
+
+                var resources = vault.FindAllByResource(CruxConstants.Key);
+                var credential = resources.FirstOrDefault();
+                if (credential == null)
+                    return;
+
+                credential.RetrievePassword();
+                var loginContext = new NiconicoContext(new NiconicoAuthenticationToken(credential.UserName, credential.Password))
+                {
+                    AdditionalUserAgent = $"{CruxConstants.Name}/{CruxConstants.Version}"
+                };
+                var status = await loginContext.SignInAsync();
+                if (status != NiconicoSignInStatus.Success)
+                    return;
+                CurrentContext = loginContext;
             }
             catch (Exception e)
             {

@@ -8,7 +8,11 @@ namespace Crux.Services.Interfaces
     {
         NiconicoContext CurrentContext { get; }
 
+        bool IsLoggedIn { get; }
+
         Task LoginAsync(string mailAddress, string password);
+
+        Task LoginAsync();
 
         Task LogoutAsync();
     }
