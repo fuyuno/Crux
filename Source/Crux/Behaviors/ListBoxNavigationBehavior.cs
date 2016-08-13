@@ -29,15 +29,20 @@ namespace Crux.Behaviors
                 RunHelper.RunLater(AddEventHandler, TimeSpan.FromMilliseconds(100));
                 return;
             }
-            ContentFrame.Navigated += ContentFrameOnNavigated;
+            ContentFrame.Navigating += ContentFrameOnNavigating;
         }
 
-        private void SyncSelectItem()
+        private void SyncSelectItem(NavigationMode navigationMode = NavigationMode.New)
         {
+            if (navigationMode == NavigationMode.Back)
+            {
+                ContentFrame.GoBack();
+                return;
+            }
             var selectedItem = AssociatedObject.SelectedItem as ListBoxItem;
-            var pageToken = GetPageToken(selectedItem);
+            var pageToken = ListBoxNavigation.GetPageToken(selectedItem);
             if (!string.IsNullOrWhiteSpace(pageToken))
-                ContentFrame.Navigate(GetPageType(pageToken), null);
+                ContentFrame?.Navigate(GetPageType(pageToken));
         }
 
         private Type GetPageType(string pageToken)
@@ -53,11 +58,12 @@ namespace Crux.Behaviors
             return viewType;
         }
 
-        private void ContentFrameOnNavigated(object sender, NavigationEventArgs e)
+        private void ContentFrameOnNavigating(object sender, NavigatingCancelEventArgs e)
         {
             if (ContentFrame.BackStack.Count < _pageStack.Count)
                 _pageStack.Pop();
 
+            AssociatedObject.SelectionChanged -= ListBoxSelectionChanged;
             switch (e.NavigationMode)
             {
                 case NavigationMode.Back:
@@ -76,8 +82,9 @@ namespace Crux.Behaviors
                     throw new ArgumentOutOfRangeException();
             }
 
+            AssociatedObject.SelectionChanged += ListBoxSelectionChanged;
             _oldIndex = AssociatedObject.SelectedIndex;
-            SyncSelectItem();
+            SyncSelectItem(e.NavigationMode);
         }
 
         private void ListBoxSelectionChanged(object sender, SelectionChangedEventArgs selectionChangedEventArgs)
@@ -91,7 +98,7 @@ namespace Crux.Behaviors
         {
             AssociatedObject.SelectionChanged -= ListBoxSelectionChanged;
             if (ContentFrame != null)
-                ContentFrame.Navigated -= ContentFrameOnNavigated;
+                ContentFrame.Navigating -= ContentFrameOnNavigating;
             RunHelper.RunLater(AddEventHandler, TimeSpan.FromMilliseconds(100));
             base.OnDetaching();
         }
@@ -104,7 +111,7 @@ namespace Crux.Behaviors
         {
             base.OnAttached();
             AssociatedObject.SelectionChanged += ListBoxSelectionChanged;
-            _oldIndex = AssociatedObject.SelectedIndex;
+            _oldIndex = 0;
             RunHelper.RunLater(AddEventHandler, TimeSpan.FromMilliseconds(500));
         }
 
@@ -123,12 +130,15 @@ namespace Crux.Behaviors
         }
 
         #endregion
+    }
 
+    public static class ListBoxNavigation
+    {
         #region PageToken
 
         public static readonly DependencyProperty PageTokenProperty = DependencyProperty.RegisterAttached("PageToken", typeof(string),
                                                                                                           typeof(ListBoxNavigationBehavior),
-                                                                                                          new PropertyMetadata(null));
+                                                                                                          new PropertyMetadata(string.Empty));
 
         public static string GetPageToken(DependencyObject obj) => (string) obj.GetValue(PageTokenProperty);
 

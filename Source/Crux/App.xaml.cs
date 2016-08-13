@@ -34,18 +34,14 @@ namespace Crux
             return shell;
         }
 
-        #region Overrides of PrismApplication
-
-        protected override Task OnInitializeAsync(IActivatedEventArgs args)
+        protected override async Task OnInitializeAsync(IActivatedEventArgs args)
         {
             UIDispatcherScheduler.Initialize();
 
             Container.RegisterType<IAccountService, AccountService>(new ContainerControlledLifetimeManager());
 
-            return base.OnInitializeAsync(args);
+            await base.OnInitializeAsync(args);
         }
-
-        #endregion
 
         protected override Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args)
         {

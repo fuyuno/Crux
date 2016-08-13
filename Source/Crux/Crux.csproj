@@ -112,6 +112,9 @@
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Settings\SettingsMainPage.xaml.cs">
+      <DependentUpon>SettingsMainPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -139,7 +142,6 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="ViewModels\Settings\" />
-    <Folder Include="Views\Settings\" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="AppShell.xaml">
@@ -147,6 +149,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Settings\SettingsMainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
