@@ -48,10 +48,7 @@ namespace Crux
         protected override Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args)
         {
             var accountService = Container.Resolve<IAccountService>();
-            if (accountService.IsLoggedIn)
-                NavigationService.Navigate("Main", null);
-            else
-                NavigationService.Navigate("Login", null);
+            NavigationService.Navigate(accountService.IsLoggedIn ? "Main" : "Login", null);
             return Task.CompletedTask;
         }
 

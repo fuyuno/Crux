@@ -4,7 +4,7 @@ using Mntone.Nico2;
 
 namespace Crux.Services.Interfaces
 {
-    internal interface IAccountService
+    public interface IAccountService
     {
         NiconicoContext CurrentContext { get; }
 
