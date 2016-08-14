@@ -102,6 +102,8 @@
     </Compile>
     <Compile Include="Behaviors\ListBoxNavigationBehavior.cs" />
     <Compile Include="CruxConstants.cs" />
+    <Compile Include="Extensions\BookmarkStream.cs" />
+    <Compile Include="Extensions\LiveApiExt.cs" />
     <Compile Include="Helpers\RunHelper.cs" />
     <Compile Include="Mvvm\ViewModel.cs" />
     <Compile Include="Mvvm\ViewModelHelper.cs" />
