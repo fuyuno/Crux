@@ -43,6 +43,8 @@ namespace Crux.Behaviors
             var pageToken = ListBoxNavigation.GetPageToken(selectedItem);
             if (!string.IsNullOrWhiteSpace(pageToken))
                 ContentFrame?.Navigate(GetPageType(pageToken));
+            if (ParentSplitView != null)
+                ParentSplitView.IsPaneOpen = false;
         }
 
         private Type GetPageType(string pageToken)
@@ -127,6 +129,21 @@ namespace Crux.Behaviors
         {
             get { return (Frame) GetValue(ContentFrameProperty); }
             set { SetValue(ContentFrameProperty, value); }
+        }
+
+        #endregion
+
+        #region ParentSplitView
+
+        public static readonly DependencyProperty ParentSplitViewProperty = DependencyProperty.Register(nameof(ParentSplitView),
+                                                                                                        typeof(SplitView),
+                                                                                                        typeof(ListBoxNavigationBehavior),
+                                                                                                        new PropertyMetadata(null));
+
+        public SplitView ParentSplitView
+        {
+            get { return (SplitView) GetValue(ParentSplitViewProperty); }
+            set { SetValue(ParentSplitViewProperty, value); }
         }
 
         #endregion

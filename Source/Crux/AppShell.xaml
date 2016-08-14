@@ -90,7 +90,8 @@
                             </Style>
                         </ListBox.Resources>
                         <i:Interaction.Behaviors>
-                            <b:ListBoxNavigationBehavior ContentFrame="{x:Bind AppRootFrame}" />
+                            <b:ListBoxNavigationBehavior ContentFrame="{x:Bind AppRootFrame}"
+                                                         ParentSplitView="{x:Bind RootSplitView}" />
                         </i:Interaction.Behaviors>
                         <ListBoxItem x:Name="Home"
                                      b:ListBoxNavigation.PageToken="Main"
