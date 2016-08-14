@@ -36,17 +36,24 @@
                              PlaceholderText="パスワード" />
                 <TextBlock Margin="5"
                            Foreground="Red"
-                           Style="{ThemeResource SubtitleTextBlockStyle}"
+                           Style="{ThemeResource BodyTextBlockStyle}"
                            Visibility="{x:Bind ViewModel.IsLoginFailure, Converter={StaticResource BooleanToVisibilityConverter}, Mode=OneWay}">
                     <Run>ログインに失敗しました。</Run>
                     <LineBreak />
-                    <Run>メールアドレスとパスワードを確認してください。</Run>
+                    <Run>メールアドレス(電話番号)とパスワードを確認してください。</Run>
                 </TextBlock>
                 <Button Width="250"
                         Margin="10"
                         HorizontalAlignment="Center"
                         Command="{x:Bind ViewModel.LoginCommand}"
                         Content="ログイン" />
+                <TextBlock Margin="5"
+                           HorizontalAlignment="Center"
+                           Foreground="Silver"
+                           Style="{ThemeResource CaptionTextBlockStyle}">
+                    もしくは
+                    <Hyperlink NavigateUri="https://account.nicovideo.jp/register">アカウントの作成</Hyperlink>
+                </TextBlock>
             </StackPanel>
             <Border Background="Black"
                     Opacity="0.5"
