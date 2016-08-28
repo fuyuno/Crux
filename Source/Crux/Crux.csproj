@@ -102,7 +102,9 @@
     </Compile>
     <Compile Include="Behaviors\ListBoxNavigationBehavior.cs" />
     <Compile Include="CruxConstants.cs" />
+    <Compile Include="Extensions\Bookmark.cs" />
     <Compile Include="Extensions\BookmarkStream.cs" />
+    <Compile Include="Extensions\CommunityInfo.cs" />
     <Compile Include="Extensions\LiveApiExt.cs" />
     <Compile Include="Helpers\RunHelper.cs" />
     <Compile Include="Mvvm\ViewModel.cs" />
@@ -110,8 +112,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\Interfaces\IAccountService.cs" />
+    <Compile Include="ViewModels\Controls\FavoriteBroadcastsViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="Views\Controls\FavoriteBroadcasts.xaml.cs">
+      <DependentUpon>FavoriteBroadcasts.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -154,6 +160,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="AppShell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\FavoriteBroadcasts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

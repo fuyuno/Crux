@@ -4,6 +4,7 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:b="using:Crux.Behaviors"
+      xmlns:c="using:Crux.Views.Controls"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:i="using:Microsoft.Xaml.Interactivity"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -100,6 +101,31 @@
                             <StackPanel Orientation="Horizontal">
                                 <FontIcon Glyph="&#xE80F;" />
                                 <TextBlock Text="ホーム" />
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem x:Name="Search"
+                                     b:ListBoxNavigation.PageToken="Main"
+                                     RelativePanel.Below="Home">
+                            <StackPanel Orientation="Horizontal">
+                                <FontIcon Glyph="&#xE1A3;" />
+                                <TextBlock Text="検索" />
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem x:Name="Favorite"
+                                     VerticalContentAlignment="Stretch"
+                                     b:ListBoxNavigation.PageToken="Main"
+                                     IsEnabled="False"
+                                     RelativePanel.Above="Settings"
+                                     RelativePanel.Below="Search">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <FontIcon Foreground="Black"
+                                              Glyph="&#xE734;" />
+                                    <TextBlock Foreground="Black"
+                                               Text="お気に入り" />
+                                </StackPanel>
+                                <c:FavoriteBroadcasts VerticalAlignment="Stretch"
+                                                      VerticalContentAlignment="Stretch" />
                             </StackPanel>
                         </ListBoxItem>
                         <ListBoxItem x:Name="Settings"
