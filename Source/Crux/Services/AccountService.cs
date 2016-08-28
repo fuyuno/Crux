@@ -64,6 +64,7 @@ namespace Crux.Services
                 if (status != NiconicoSignInStatus.Success)
                     return;
                 CurrentContext = loginContext;
+                CurrentUser = new User(await CurrentContext.User.GetInfoAsync());
             }
             catch (Exception e)
             {
@@ -78,7 +79,7 @@ namespace Crux.Services
             await CurrentContext.SignOutOffAsync();
             CurrentContext.Dispose();
             CurrentContext = null;
-
+            CurrentUser = null;
             try
             {
                 var vault = new PasswordVault();
