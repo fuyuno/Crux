@@ -34,7 +34,7 @@ namespace Crux.ViewModels
                 if (!accountService.IsLoggedIn)
                     IsLoginFailure = true;
                 else
-                    navigationService.Navigate("Home", null);
+                    navigationService.Navigate("Main", null);
             }).AddTo(this);
         }
 

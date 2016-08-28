@@ -197,12 +197,15 @@
     <Reference Include="Mntone.Data.Amf">
       <HintPath>..\..\Assemblies\Mntone.Data.Amf.winmd</HintPath>
     </Reference>
-    <Reference Include="Mntone.Nico2.UWP">
-      <HintPath>..\..\Assemblies\Mntone.Nico2.UWP.dll</HintPath>
-    </Reference>
     <Reference Include="Mntone.Rtmp">
       <HintPath>..\..\Assemblies\Mntone.Rtmp.winmd</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenNiconico2\Mntone.Nico2\Mntone.Nico2.UWP\Mntone.Nico2.UWP.csproj">
+      <Project>{a51b645a-1ae8-43b7-a652-7ee0a82bc97e}</Project>
+      <Name>Mntone.Nico2.UWP</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

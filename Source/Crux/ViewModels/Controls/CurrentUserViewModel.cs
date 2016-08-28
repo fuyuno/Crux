@@ -4,6 +4,8 @@ using System.Reactive.Linq;
 using Crux.Mvvm;
 using Crux.Services.Interfaces;
 
+using Reactive.Bindings.Extensions;
+
 namespace Crux.ViewModels.Controls
 {
     public class CurrentUserViewModel : ViewModel
@@ -16,6 +18,7 @@ namespace Crux.ViewModels.Controls
             IconUrl = "http://placehold.jp/24/dddddd/999999/48x48.png?text=A";
             Name = "アカウント";
             Observable.Timer(TimeSpan.Zero, TimeSpan.FromSeconds(1))
+                      .ObserveOnUIDispatcher()
                       .Subscribe(w =>
                       {
                           if (!_accountService.IsLoggedIn)

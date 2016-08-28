@@ -1,0 +1,3 @@
+[submodule "Source/OpenNiconico2"]
+	path = Source/OpenNiconico2
+	url = git@github.com:fuyuno/OpenNiconico2.git
