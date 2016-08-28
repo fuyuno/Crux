@@ -128,6 +128,11 @@
                                                       VerticalContentAlignment="Stretch" />
                             </StackPanel>
                         </ListBoxItem>
+                        <ListBoxItem x:Name="User"
+                                     b:ListBoxNavigation.PageToken="Users.My"
+                                     RelativePanel.Above="Settings">
+                            <c:CurrentUser />
+                        </ListBoxItem>
                         <ListBoxItem x:Name="Settings"
                                      b:ListBoxNavigation.PageToken="Settings.SettingsMain"
                                      RelativePanel.AlignBottomWithPanel="True">

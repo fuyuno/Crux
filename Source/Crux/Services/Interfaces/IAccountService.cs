@@ -1,5 +1,7 @@
 ﻿using System.Threading.Tasks;
 
+using Crux.Models;
+
 using Mntone.Nico2;
 
 namespace Crux.Services.Interfaces
@@ -7,6 +9,8 @@ namespace Crux.Services.Interfaces
     public interface IAccountService
     {
         NiconicoContext CurrentContext { get; }
+
+        User CurrentUser { get; }
 
         bool IsLoggedIn { get; }
 

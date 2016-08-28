@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 using Windows.Security.Credentials;
 
+using Crux.Models;
 using Crux.Services.Interfaces;
 
 using Mntone.Nico2;
@@ -16,7 +17,8 @@ namespace Crux.Services
         #region Implementation of IAccountService
 
         public NiconicoContext CurrentContext { get; private set; }
-        public bool IsLoggedIn => CurrentContext != null;
+        public User CurrentUser { get; private set; }
+        public bool IsLoggedIn => (CurrentContext != null) && (CurrentUser != null);
 
         public async Task LoginAsync(string mailAddress, string password)
         {
@@ -28,6 +30,7 @@ namespace Crux.Services
             if (status != NiconicoSignInStatus.Success)
                 return;
             CurrentContext = loginContext;
+            CurrentUser = new User(await CurrentContext.User.GetInfoAsync());
 
             try
             {
