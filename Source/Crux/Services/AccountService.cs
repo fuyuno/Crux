@@ -76,7 +76,9 @@ namespace Crux.Services
         {
             if (CurrentContext == null)
                 return;
-            await CurrentContext.SignOutOffAsync();
+            var status = await CurrentContext.SignOutOffAsync();
+            if (status != NiconicoSignInStatus.Failed)
+                return;
             CurrentContext.Dispose();
             CurrentContext = null;
             CurrentUser = null;

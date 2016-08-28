@@ -27,6 +27,17 @@ namespace Crux
 
         #region Overrides of PrismApplication
 
+        #region Overrides of PrismApplication
+
+        protected override async Task OnSuspendingApplicationAsync()
+        {
+            var accountService = Container.Resolve<IAccountService>();
+            await accountService.LogoutAsync();
+            await base.OnSuspendingApplicationAsync();
+        }
+
+        #endregion
+
         protected override UIElement CreateShell(Frame rootFrame)
         {
             var shell = Container.Resolve<AppShell>();
