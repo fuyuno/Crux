@@ -32,7 +32,7 @@ namespace Crux
         protected override async Task OnSuspendingApplicationAsync()
         {
             var accountService = Container.Resolve<IAccountService>();
-            await accountService.LogoutAsync();
+            await accountService.LogoutAsync(false);
             await base.OnSuspendingApplicationAsync();
         }
 

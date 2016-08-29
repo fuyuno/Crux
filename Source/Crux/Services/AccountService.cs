@@ -72,7 +72,7 @@ namespace Crux.Services
             }
         }
 
-        public async Task LogoutAsync()
+        public async Task LogoutAsync(bool isDelCredentials = true)
         {
             if (CurrentContext == null)
                 return;
@@ -82,6 +82,8 @@ namespace Crux.Services
             CurrentContext.Dispose();
             CurrentContext = null;
             CurrentUser = null;
+            if (!isDelCredentials)
+                return;
             try
             {
                 var vault = new PasswordVault();

@@ -18,6 +18,6 @@ namespace Crux.Services.Interfaces
 
         Task LoginAsync();
 
-        Task LogoutAsync();
+        Task LogoutAsync(bool isDelCredentials = true);
     }
 }
