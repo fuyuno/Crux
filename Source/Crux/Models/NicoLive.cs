@@ -25,8 +25,6 @@ namespace Crux.Models
             HasMoreItems = true;
         }
 
-        public async Task SyncLivesAsync() => await SyncLives();
-
         private async Task SyncLives()
         {
             var broadcasts = await _context.Live.GetOnAirStreamsIndexAsync(0);

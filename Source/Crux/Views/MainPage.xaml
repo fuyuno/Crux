@@ -1,7 +1,10 @@
 ﻿<Page x:Class="Crux.Views.MainPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:behaviors="using:Crux.Behaviors"
+      xmlns:controls="using:Crux.Views.Controls"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:i="using:Microsoft.Xaml.Interactivity"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:prism="using:Prism.Windows.Mvvm"
       xmlns:vm="using:Crux.ViewModels"
@@ -18,6 +21,36 @@
                    Padding="58,0,0,0"
                    Style="{ThemeResource TitleTextBlockStyle}"
                    Text="ホーム" />
-
+        <GridView Grid.Row="1"
+                  Height="500"
+                  VerticalAlignment="Stretch"
+                  ItemsSource="{x:Bind ViewModel.Broadcasts}">
+            <i:Interaction.Behaviors>
+                <behaviors:AdjustControlSizeBehavior HeightOffset="-48"
+                                                     IsSyncHeight="True" />
+            </i:Interaction.Behaviors>
+            <GridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsWrapGrid Orientation="Horizontal">
+                        <i:Interaction.Behaviors>
+                            <behaviors:GridViewEuqalitySizeBehavior AdaptiveSizeStr="(0,125,175)"
+                                                                    IsEnabledHeight="True"/>
+                        </i:Interaction.Behaviors>
+                    </ItemsWrapGrid>
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>
+            <GridView.Header>
+                <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}"
+                           Text="現在放送中の生放送"
+                           Margin="10,0"/>
+            </GridView.Header>
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <controls:BroadcastProgram HorizontalContentAlignment="Stretch"
+                                               VerticalContentAlignment="Stretch"
+                                               DataContext="{Binding}" />
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
     </Grid>
 </Page>

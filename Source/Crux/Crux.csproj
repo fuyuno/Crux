@@ -100,9 +100,14 @@
     <Compile Include="AppShell.xaml.cs">
       <DependentUpon>AppShell.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Behaviors\AdjustControlSizeBehavior.cs" />
+    <Compile Include="Behaviors\GridViewEuqalitySizeBehavior.cs" />
     <Compile Include="Behaviors\ListBoxNavigationBehavior.cs" />
+    <Compile Include="Collections\IncrementalObservableCollection.cs" />
     <Compile Include="CruxConstants.cs" />
+    <Compile Include="Helpers\ModelHelper.cs" />
     <Compile Include="Helpers\RunHelper.cs" />
+    <Compile Include="Models\AdaptiveSize.cs" />
     <Compile Include="Models\NicoLive.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Mvvm\ViewModel.cs" />
@@ -110,10 +115,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\Interfaces\IAccountService.cs" />
+    <Compile Include="ViewModels\Controls\BroadcastProgramViewModel.cs" />
     <Compile Include="ViewModels\Controls\CurrentUserViewModel.cs" />
     <Compile Include="ViewModels\Controls\FavoriteBroadcastsViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="Views\Controls\BroadcastProgram.xaml.cs">
+      <DependentUpon>BroadcastProgram.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Controls\CurrentUser.xaml.cs">
       <DependentUpon>CurrentUser.xaml</DependentUpon>
     </Compile>
@@ -165,6 +174,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Controls\BroadcastProgram.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Controls\CurrentUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -203,6 +216,11 @@
       <Project>{a51b645a-1ae8-43b7-a652-7ee0a82bc97e}</Project>
       <Name>Mntone.Nico2.UWP</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="WindowsMobile, Version=10.0.14393.0">
+      <Name>Windows Mobile Extensions for the UWP</Name>
+    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
