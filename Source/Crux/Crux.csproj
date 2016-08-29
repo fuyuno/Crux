@@ -103,6 +103,7 @@
     <Compile Include="Behaviors\ListBoxNavigationBehavior.cs" />
     <Compile Include="CruxConstants.cs" />
     <Compile Include="Helpers\RunHelper.cs" />
+    <Compile Include="Models\NicoLive.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Mvvm\ViewModel.cs" />
     <Compile Include="Mvvm\ViewModelHelper.cs" />
