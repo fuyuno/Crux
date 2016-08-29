@@ -102,11 +102,6 @@
     </Compile>
     <Compile Include="Behaviors\ListBoxNavigationBehavior.cs" />
     <Compile Include="CruxConstants.cs" />
-    <Compile Include="Extensions\Bookmark.cs" />
-    <Compile Include="Extensions\BookmarkStream.cs" />
-    <Compile Include="Extensions\CommunityInfo.cs" />
-    <Compile Include="Extensions\UserApiExt.cs" />
-    <Compile Include="Extensions\LiveApiExt.cs" />
     <Compile Include="Helpers\RunHelper.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Mvvm\ViewModel.cs" />
@@ -161,6 +156,7 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Extensions\" />
     <Folder Include="ViewModels\Settings\" />
   </ItemGroup>
   <ItemGroup>
