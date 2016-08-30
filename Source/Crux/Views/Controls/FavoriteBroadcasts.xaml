@@ -9,16 +9,32 @@
              d:DataContext="{d:DesignInstance vm:FavoriteBroadcastsViewModel}"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d">
-    <ListView ItemsSource="{x:Bind ViewModel.Broadcasts, Mode=OneWay}">
-        <ListView.ItemsPanel>
-            <ItemsPanelTemplate>
-                <ItemsStackPanel />
-            </ItemsPanelTemplate>
-        </ListView.ItemsPanel>
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <controls:BroadcastProgramMini DataContext="{Binding}" />
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal">
+            <FontIcon Foreground="Black"
+                      Glyph="&#xE734;" />
+            <TextBlock Foreground="Black"
+                       Text="お気に入り" />
+        </StackPanel>
+        <ListView Grid.Row="1"
+                  ItemsSource="{x:Bind ViewModel.Broadcasts, Mode=OneWay}"
+                  SelectionMode="None">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsStackPanel />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <controls:BroadcastProgramMini HorizontalContentAlignment="Stretch"
+                                                   DataContext="{Binding}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
 </UserControl>

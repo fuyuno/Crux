@@ -103,6 +103,7 @@
     <Compile Include="Behaviors\AdjustControlSizeBehavior.cs" />
     <Compile Include="Behaviors\GridViewEuqalitySizeBehavior.cs" />
     <Compile Include="Behaviors\ListBoxNavigationBehavior.cs" />
+    <Compile Include="Behaviors\ListBoxNotSelectableItemBehavior.cs" />
     <Compile Include="Collections\IncrementalObservableCollection.cs" />
     <Compile Include="CruxConstants.cs" />
     <Compile Include="Helpers\ModelHelper.cs" />

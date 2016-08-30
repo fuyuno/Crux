@@ -91,6 +91,7 @@
                             </Style>
                         </ListBox.Resources>
                         <i:Interaction.Behaviors>
+                            <b:ListBoxNotSelectableItemBehavior />
                             <b:ListBoxNavigationBehavior ContentFrame="{x:Bind AppRootFrame}"
                                                          ParentSplitView="{x:Bind RootSplitView}" />
                         </i:Interaction.Behaviors>
@@ -113,20 +114,11 @@
                         </ListBoxItem>
                         <ListBoxItem x:Name="Favorite"
                                      VerticalContentAlignment="Stretch"
-                                     b:ListBoxNavigation.PageToken="Main"
-                                     IsEnabled="False"
+                                     b:ListBoxNotSelectableItem.Mark="True"
                                      RelativePanel.Above="User"
                                      RelativePanel.Below="Search">
-                            <StackPanel VerticalAlignment="Stretch">
-                                <StackPanel Orientation="Horizontal">
-                                    <FontIcon Foreground="Black"
-                                              Glyph="&#xE734;" />
-                                    <TextBlock Foreground="Black"
-                                               Text="お気に入り" />
-                                </StackPanel>
-                                <c:FavoriteBroadcasts VerticalAlignment="Stretch"
-                                                      VerticalContentAlignment="Stretch" />
-                            </StackPanel>
+                            <c:FavoriteBroadcasts VerticalAlignment="Stretch"
+                                                  VerticalContentAlignment="Stretch" />
                         </ListBoxItem>
                         <ListBoxItem x:Name="User"
                                      b:ListBoxNavigation.PageToken="Users.My"

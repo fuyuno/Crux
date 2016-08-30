@@ -28,7 +28,7 @@ namespace Crux.Models
 
         private async Task SyncBroadcasts()
         {
-            var broadcasts = await _context.Live.BookmarksAsync(_page++);
+            var broadcasts = await _context.Live.GetBookmarksAsync(_page++);
             broadcasts.BookmarkStreams.ForEach(w => LiveBroadcasts.Add(w));
             _counter = (uint) broadcasts.BookmarkStreams.Count;
             if (_counter == 0)

@@ -15,6 +15,7 @@ namespace Crux.Behaviors
     internal class ListBoxNavigationBehavior : Behavior<ListBox>
     {
         private readonly Stack<int> _pageStack;
+        private string _lastToken;
         private int _oldIndex;
 
         public ListBoxNavigationBehavior()
@@ -41,8 +42,11 @@ namespace Crux.Behaviors
             }
             var selectedItem = AssociatedObject.SelectedItem as ListBoxItem;
             var pageToken = ListBoxNavigation.GetPageToken(selectedItem);
-            if (!string.IsNullOrWhiteSpace(pageToken))
+            if (!string.IsNullOrWhiteSpace(pageToken) && (pageToken != _lastToken))
+            {
                 ContentFrame?.Navigate(GetPageType(pageToken));
+                _lastToken = pageToken;
+            }
             if (ParentSplitView != null)
                 ParentSplitView.IsPaneOpen = false;
         }
@@ -63,7 +67,10 @@ namespace Crux.Behaviors
         private void ContentFrameOnNavigating(object sender, NavigatingCancelEventArgs e)
         {
             if (ContentFrame.BackStack.Count < _pageStack.Count)
+            {
                 _pageStack.Pop();
+                _lastToken = "";
+            }
 
             AssociatedObject.SelectionChanged -= ListBoxSelectionChanged;
             switch (e.NavigationMode)
@@ -91,6 +98,8 @@ namespace Crux.Behaviors
 
         private void ListBoxSelectionChanged(object sender, SelectionChangedEventArgs selectionChangedEventArgs)
         {
+            if (ListBoxNotSelectableItem.GetMark(AssociatedObject.SelectedItem as ListBoxItem))
+                return;
             SyncSelectItem();
         }
 

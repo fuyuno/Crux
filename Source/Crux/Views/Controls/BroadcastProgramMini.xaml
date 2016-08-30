@@ -7,23 +7,23 @@
              d:DataContext="{d:DesignInstance vm:BroadcastProgramMiniViewModel}"
              d:DesignHeight="48"
              mc:Ignorable="d">
-    <Grid>
+    <Grid Margin="02.5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="48" />
             <ColumnDefinition Width="10" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Image Grid.Column="0"
-               Width="48"
-               Height="48"
-               Source="{Binding ThumbnailUrl,
-                                Mode=OneWay}" />
-        <TextBlock Grid.Column="2"
+                   Width="48"
                    Height="48"
-                   Style="{ThemeResource BodyTextBlockStyle}"
-                   Text="{Binding Title,
-                                  Mode=OneWay}"
-                   TextTrimming="CharacterEllipsis"
-                   TextWrapping="Wrap" />
+                   Source="{Binding ThumbnailUrl,
+                                    Mode=OneWay}" />
+        <TextBlock Grid.Column="2"
+                       Height="48"
+                       Style="{ThemeResource BodyTextBlockStyle}"
+                       Text="{Binding Title,
+                                      Mode=OneWay}"
+                       TextTrimming="CharacterEllipsis"
+                       TextWrapping="Wrap" />
     </Grid>
 </UserControl>
