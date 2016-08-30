@@ -34,15 +34,15 @@
                     <ItemsWrapGrid Orientation="Horizontal">
                         <i:Interaction.Behaviors>
                             <behaviors:GridViewEuqalitySizeBehavior AdaptiveSizeStr="(0,125,175)"
-                                                                    IsEnabledHeight="True"/>
+                                                                    IsEnabledHeight="True" />
                         </i:Interaction.Behaviors>
                     </ItemsWrapGrid>
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
             <GridView.Header>
-                <TextBlock Style="{ThemeResource SubtitleTextBlockStyle}"
-                           Text="現在放送中の生放送"
-                           Margin="10,0"/>
+                <TextBlock Margin="10,0"
+                           Style="{ThemeResource SubtitleTextBlockStyle}"
+                           Text="現在放送中の生放送" />
             </GridView.Header>
             <GridView.ItemTemplate>
                 <DataTemplate>

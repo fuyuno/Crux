@@ -1,6 +1,7 @@
 ﻿<UserControl x:Class="Crux.Views.Controls.FavoriteBroadcasts"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="using:Crux.Views.Controls"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:prism="using:Prism.Windows.Mvvm"
@@ -8,14 +9,16 @@
              d:DataContext="{d:DesignInstance vm:FavoriteBroadcastsViewModel}"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d">
-    <ItemsControl>
-        <ItemsControl.ItemsPanel>
+    <ListView ItemsSource="{x:Bind ViewModel.Broadcasts, Mode=OneWay}">
+        <ListView.ItemsPanel>
             <ItemsPanelTemplate>
-                <VirtualizingStackPanel />
+                <ItemsStackPanel />
             </ItemsPanelTemplate>
-        </ItemsControl.ItemsPanel>
-        <ItemsControl.ItemTemplate>
-            <DataTemplate />
-        </ItemsControl.ItemTemplate>
-    </ItemsControl>
+        </ListView.ItemsPanel>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <controls:BroadcastProgramMini DataContext="{Binding}" />
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </UserControl>

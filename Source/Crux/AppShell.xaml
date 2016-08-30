@@ -115,9 +115,9 @@
                                      VerticalContentAlignment="Stretch"
                                      b:ListBoxNavigation.PageToken="Main"
                                      IsEnabled="False"
-                                     RelativePanel.Above="Settings"
+                                     RelativePanel.Above="User"
                                      RelativePanel.Below="Search">
-                            <StackPanel>
+                            <StackPanel VerticalAlignment="Stretch">
                                 <StackPanel Orientation="Horizontal">
                                     <FontIcon Foreground="Black"
                                               Glyph="&#xE734;" />

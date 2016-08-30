@@ -5,33 +5,32 @@ using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.UI.Xaml.Data;
 
-using Microsoft.Practices.ObjectBuilder2;
-
 using Mntone.Nico2;
-using Mntone.Nico2.Live.OnAirStreams;
+using Mntone.Nico2.Live.Bookmark;
 
 namespace Crux.Models
 {
-    public class NicoLive : ISupportIncrementalLoading
+    internal class NicoFavLive : ISupportIncrementalLoading
     {
         private readonly NiconicoContext _context;
         private uint _counter;
-        private ushort _zIndex;
-        public ObservableCollection<OnAirStream> LiveBroadcasts { get; }
+        private int _page;
 
-        public NicoLive(NiconicoContext context)
+        public ObservableCollection<BookmarkStream> LiveBroadcasts { get; }
+
+        public NicoFavLive(NiconicoContext context)
         {
             _context = context;
-            _zIndex = 1;
-            LiveBroadcasts = new ObservableCollection<OnAirStream>();
+            _page = 1;
+            LiveBroadcasts = new ObservableCollection<BookmarkStream>();
             HasMoreItems = true;
         }
 
         private async Task SyncBroadcasts()
         {
-            var broadcasts = await _context.Live.GetOnAirStreamsIndexAsync(_zIndex++);
-            broadcasts.OnAirStreams.ForEach(w => LiveBroadcasts.Add(w));
-            _counter = (uint) broadcasts.OnAirStreams.Count;
+            var broadcasts = await _context.Live.BookmarksAsync(_page++);
+            broadcasts.BookmarkStreams.ForEach(w => LiveBroadcasts.Add(w));
+            _counter = (uint) broadcasts.BookmarkStreams.Count;
             if (_counter == 0)
                 HasMoreItems = false;
         }

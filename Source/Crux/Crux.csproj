@@ -108,6 +108,7 @@
     <Compile Include="Helpers\ModelHelper.cs" />
     <Compile Include="Helpers\RunHelper.cs" />
     <Compile Include="Models\AdaptiveSize.cs" />
+    <Compile Include="Models\NicoFavLive.cs" />
     <Compile Include="Models\NicoLive.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Mvvm\ViewModel.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\Interfaces\IAccountService.cs" />
+    <Compile Include="ViewModels\Controls\BroadcastProgramMiniViewModel.cs" />
     <Compile Include="ViewModels\Controls\BroadcastProgramViewModel.cs" />
     <Compile Include="ViewModels\Controls\CurrentUserViewModel.cs" />
     <Compile Include="ViewModels\Controls\FavoriteBroadcastsViewModel.cs" />
@@ -122,6 +124,9 @@
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="Views\Controls\BroadcastProgram.xaml.cs">
       <DependentUpon>BroadcastProgram.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Controls\BroadcastProgramMini.xaml.cs">
+      <DependentUpon>BroadcastProgramMini.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Controls\CurrentUser.xaml.cs">
       <DependentUpon>CurrentUser.xaml</DependentUpon>
@@ -175,6 +180,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Controls\BroadcastProgram.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\BroadcastProgramMini.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
