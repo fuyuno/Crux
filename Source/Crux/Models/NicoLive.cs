@@ -16,18 +16,20 @@ namespace Crux.Models
     {
         private readonly NiconicoContext _context;
         private uint _counter;
+        private ushort _zIndex;
         public ObservableCollection<OnAirStream> LiveBroadcasts { get; }
 
         public NicoLive(NiconicoContext context)
         {
             _context = context;
+            _zIndex = 1;
             LiveBroadcasts = new ObservableCollection<OnAirStream>();
             HasMoreItems = true;
         }
 
         private async Task SyncLives()
         {
-            var broadcasts = await _context.Live.GetOnAirStreamsIndexAsync(0);
+            var broadcasts = await _context.Live.GetOnAirStreamsIndexAsync(_zIndex++);
             broadcasts.OnAirStreams.ForEach(w => LiveBroadcasts.Add(w));
             _counter = (uint) broadcasts.OnAirStreams.Count;
             if (_counter == 0)
