@@ -12,7 +12,7 @@ namespace Crux.ViewModels.Controls
 
         public string Title => _onAirStream.Title;
 
-        public string ViewCount => string.Format("{0:N}", _onAirStream.ViewCount);
+        public string ViewCount => _onAirStream.ViewCount.HasValue ? string.Format("{0:#,#}", _onAirStream.ViewCount) : "-";
 
         public BroadcastProgramViewModel(OnAirStream onAirStream)
         {
