@@ -105,7 +105,7 @@
                             </StackPanel>
                         </ListBoxItem>
                         <ListBoxItem x:Name="Search"
-                                     b:ListBoxNavigation.PageToken="Main"
+                                     b:ListBoxNavigation.PageToken="Search"
                                      RelativePanel.Below="Home">
                             <StackPanel Orientation="Horizontal">
                                 <FontIcon Glyph="&#xE1A3;" />
