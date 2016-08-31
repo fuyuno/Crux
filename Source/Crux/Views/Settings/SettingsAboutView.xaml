@@ -51,7 +51,7 @@
             <TextBlock Text="Copyright (c) 2013, mntone と OpenNiconico2 の寄与者" />
             <TextBlock>
                 ライセンス本文：
-                <Hyperlink NavigateUri="https://github.com/mntone/OpenNiconico2/blob/master/license.md">The BSD 2-Clause License</Hyperlink>
+                <Hyperlink NavigateUri="https://github.com/fuyuno/OpenNiconico2/blob/master/license.md">The BSD 2-Clause License</Hyperlink>
             </TextBlock>
             <!--#endregion-->
             <!--#region Prism.Windows-->
