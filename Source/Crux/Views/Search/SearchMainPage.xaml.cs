@@ -1,19 +1,19 @@
 ﻿using Windows.UI.Xaml.Controls;
 
-using Crux.ViewModels;
+using Crux.ViewModels.Search;
 
 // 空白ページのアイテム テンプレートについては、http://go.microsoft.com/fwlink/?LinkId=234238 を参照してください
 
-namespace Crux.Views
+namespace Crux.Views.Search
 {
     /// <summary>
     ///     それ自体で使用できる空白ページまたはフレーム内に移動できる空白ページ。
     /// </summary>
-    public sealed partial class SearchPage : Page
+    public sealed partial class SearchMainPage : Page
     {
-        public SearchPageViewModel ViewModel => DataContext as SearchPageViewModel;
+        public SearchMainPageViewModel ViewModel => DataContext as SearchMainPageViewModel;
 
-        public SearchPage()
+        public SearchMainPage()
         {
             InitializeComponent();
         }

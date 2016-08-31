@@ -123,7 +123,13 @@
     <Compile Include="ViewModels\Controls\FavoriteBroadcastsViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
-    <Compile Include="ViewModels\SearchPageViewModel.cs" />
+    <Compile Include="ViewModels\Search\SearchCommonViewModel.cs" />
+    <Compile Include="ViewModels\Search\SearchFaceViewModel.cs" />
+    <Compile Include="ViewModels\Search\SearchLiveViewModel.cs" />
+    <Compile Include="ViewModels\Search\SearchMainPageViewModel.cs" />
+    <Compile Include="ViewModels\Search\SearchReqViewModel.cs" />
+    <Compile Include="ViewModels\Search\SearchTotuViewModel.cs" />
+    <Compile Include="ViewModels\Search\SearchTryViewModel.cs" />
     <Compile Include="Views\Controls\BroadcastList.xaml.cs">
       <DependentUpon>BroadcastList.xaml</DependentUpon>
     </Compile>
@@ -145,8 +151,26 @@
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SearchPage.xaml.cs">
-      <DependentUpon>SearchPage.xaml</DependentUpon>
+    <Compile Include="Views\Search\SearchCommonView.xaml.cs">
+      <DependentUpon>SearchCommonView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search\SearchFaceView.xaml.cs">
+      <DependentUpon>SearchFaceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search\SearchLiveView.xaml.cs">
+      <DependentUpon>SearchLiveView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search\SearchMainPage.xaml.cs">
+      <DependentUpon>SearchMainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search\SearchReqView.xaml.cs">
+      <DependentUpon>SearchReqView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search\SearchTotuView.xaml.cs">
+      <DependentUpon>SearchTotuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Search\SearchTryView.xaml.cs">
+      <DependentUpon>SearchTryView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Settings\SettingsAboutView.xaml.cs">
       <DependentUpon>SettingsAboutView.xaml</DependentUpon>
@@ -215,7 +239,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SearchPage.xaml">
+    <Page Include="Views\Search\SearchCommonView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Search\SearchFaceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Search\SearchLiveView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Search\SearchMainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Search\SearchReqView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Search\SearchTotuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Search\SearchTryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
