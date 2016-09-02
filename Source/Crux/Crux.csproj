@@ -111,6 +111,7 @@
     <Compile Include="Models\AdaptiveSize.cs" />
     <Compile Include="Models\NicoFavLive.cs" />
     <Compile Include="Models\NicoLive.cs" />
+    <Compile Include="Models\LiveSort.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Mvvm\ViewModel.cs" />
     <Compile Include="Mvvm\ViewModelHelper.cs" />
