@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 
 using Crux.Mvvm;
 
@@ -13,6 +14,7 @@ namespace Crux.ViewModels
         public override void OnNavigatedTo(NavigatedToEventArgs e, Dictionary<string, object> viewModelState)
         {
             base.OnNavigatedTo(e, viewModelState);
+            Debug.WriteLine(e.Parameter);
         }
 
         #endregion

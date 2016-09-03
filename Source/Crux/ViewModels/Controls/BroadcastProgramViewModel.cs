@@ -22,5 +22,7 @@ namespace Crux.ViewModels.Controls
             _navigationService = navigationService;
             _onAirStream = onAirStream;
         }
+
+        public void OnItemTapped() => _navigationService.Navigate("Live", _onAirStream.Id);
     }
 }
