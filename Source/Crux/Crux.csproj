@@ -122,6 +122,7 @@
     <Compile Include="ViewModels\Controls\BroadcastProgramViewModel.cs" />
     <Compile Include="ViewModels\Controls\CurrentUserViewModel.cs" />
     <Compile Include="ViewModels\Controls\FavoriteBroadcastsViewModel.cs" />
+    <Compile Include="ViewModels\LivePageViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\Search\SearchBaseViewModel.cs" />
@@ -147,6 +148,9 @@
     </Compile>
     <Compile Include="Views\Controls\FavoriteBroadcasts.xaml.cs">
       <DependentUpon>FavoriteBroadcasts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LivePage.xaml.cs">
+      <DependentUpon>LivePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -230,6 +234,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Controls\FavoriteBroadcasts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LivePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

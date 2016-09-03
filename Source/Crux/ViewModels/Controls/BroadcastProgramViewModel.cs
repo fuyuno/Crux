@@ -2,10 +2,13 @@
 
 using Mntone.Nico2.Live.OnAirStreams;
 
+using Prism.Windows.Navigation;
+
 namespace Crux.ViewModels.Controls
 {
     public class BroadcastProgramViewModel : ViewModel
     {
+        private readonly INavigationService _navigationService;
         private readonly OnAirStream _onAirStream;
 
         public string ThumbnailUrl => _onAirStream.SmallThumbnailUrl.ToString();
@@ -14,8 +17,9 @@ namespace Crux.ViewModels.Controls
 
         public string ViewCount => _onAirStream.ViewCount.HasValue ? string.Format("{0:#,#}", _onAirStream.ViewCount) : "-";
 
-        public BroadcastProgramViewModel(OnAirStream onAirStream)
+        public BroadcastProgramViewModel(INavigationService navigationService, OnAirStream onAirStream)
         {
+            _navigationService = navigationService;
             _onAirStream = onAirStream;
         }
     }

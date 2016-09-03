@@ -14,13 +14,15 @@ namespace Crux.ViewModels
     public class MainPageViewModel : ViewModel
     {
         private readonly IAccountService _accountService;
+        private readonly INavigationService _navigationService;
         private readonly NicoLive _nicoLive;
 
         public IncrementalObservableCollection<BroadcastProgramViewModel> Broadcasts { get; }
 
-        public MainPageViewModel(IAccountService accountService)
+        public MainPageViewModel(IAccountService accountService, INavigationService navigationService)
         {
             _accountService = accountService;
+            _navigationService = navigationService;
             _nicoLive = new NicoLive(_accountService.CurrentContext);
             Broadcasts = new IncrementalObservableCollection<BroadcastProgramViewModel>();
         }
@@ -30,7 +32,7 @@ namespace Crux.ViewModels
         public override void OnNavigatedTo(NavigatedToEventArgs e, Dictionary<string, object> viewModelState)
         {
             _nicoLive.LiveBroadcasts.Clear();
-            ModelHelper.ConnectTo(Broadcasts, _nicoLive, w => w.LiveBroadcasts, w => new BroadcastProgramViewModel(w));
+            ModelHelper.ConnectTo(Broadcasts, _nicoLive, w => w.LiveBroadcasts, w => new BroadcastProgramViewModel(_navigationService, w));
             base.OnNavigatedTo(e, viewModelState);
         }
 
