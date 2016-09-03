@@ -124,6 +124,7 @@
     <Compile Include="ViewModels\Controls\FavoriteBroadcastsViewModel.cs" />
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="ViewModels\Search\SearchBaseViewModel.cs" />
     <Compile Include="ViewModels\Search\SearchCommonViewModel.cs" />
     <Compile Include="ViewModels\Search\SearchFaceViewModel.cs" />
     <Compile Include="ViewModels\Search\SearchLiveViewModel.cs" />

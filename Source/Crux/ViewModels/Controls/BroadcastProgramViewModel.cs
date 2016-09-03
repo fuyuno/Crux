@@ -8,7 +8,7 @@ namespace Crux.ViewModels.Controls
     {
         private readonly OnAirStream _onAirStream;
 
-        public string ThumbnailUrl => _onAirStream.SmallThumbnailUrl.ToString().Replace("/s/", "/");
+        public string ThumbnailUrl => _onAirStream.SmallThumbnailUrl.ToString();
 
         public string Title => _onAirStream.Title;
 

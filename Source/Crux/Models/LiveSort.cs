@@ -8,7 +8,7 @@ namespace Crux.Models
 {
     public class LiveSort
     {
-        private SortType SortType { get; }
+        public SortType SortType { get; }
         public SortDirection SortDirection { get; }
         public string Name { get; }
 
