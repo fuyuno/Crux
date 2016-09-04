@@ -13,11 +13,17 @@
             <RowDefinition Height="48" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        <Grid Grid.Row="0"
+              Grid.RowSpan="2">
+            <ProgressRing Width="48"
+                          Height="48"
+                          IsActive="True" />
+        </Grid>
         <TextBlock Grid.Row="0"
                    VerticalAlignment="Center"
                    Padding="58,0,0,0"
                    Style="{ThemeResource TitleTextBlockStyle}"
-                   Text="がんばるぞいっ!×5" />
+                   Text="{x:Bind ViewModel.Title, Mode=OneWay}" />
         <Grid Grid.Row="1" />
     </Grid>
 </Page>

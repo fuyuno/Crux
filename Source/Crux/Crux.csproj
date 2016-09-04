@@ -109,6 +109,7 @@
     <Compile Include="Helpers\ModelHelper.cs" />
     <Compile Include="Helpers\RunHelper.cs" />
     <Compile Include="Models\AdaptiveSize.cs" />
+    <Compile Include="Models\LiveStatus.cs" />
     <Compile Include="Models\NicoFavLive.cs" />
     <Compile Include="Models\NicoLive.cs" />
     <Compile Include="Models\LiveSort.cs" />

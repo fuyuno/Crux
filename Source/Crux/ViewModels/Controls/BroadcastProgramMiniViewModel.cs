@@ -22,6 +22,6 @@ namespace Crux.ViewModels.Controls
             Title = _bookmarkStream.Title.Length >= 40 ? $"{_bookmarkStream.Title.Substring(0, 39)}..." : _bookmarkStream.Title;
         }
 
-        public void OnItemTapped() => _navigationService.Navigate("Live", _bookmarkStream.Id);
+        public void OnItemTapped() => _navigationService.Navigate("Live", $"lv{_bookmarkStream.Id}");
     }
 }
