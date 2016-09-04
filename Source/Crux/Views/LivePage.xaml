@@ -1,7 +1,9 @@
 ﻿<Page x:Class="Crux.Views.LivePage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:behaviors="using:Crux.Behaviors"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:prism="using:Prism.Windows.Mvvm"
       xmlns:vm="using:Crux.ViewModels"
@@ -13,17 +15,25 @@
             <RowDefinition Height="48" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0"
-              Grid.RowSpan="2">
-            <ProgressRing Width="48"
-                          Height="48"
-                          IsActive="True" />
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal"
+                    Padding="58,0,0,0">
+            <Image Width="48"
+                   Height="48"
+                   Source="{x:Bind ViewModel.CommunityImage, Mode=OneWay}" />
+            <TextBlock Margin="10,0"
+                       VerticalAlignment="Center"
+                       Style="{ThemeResource TitleTextBlockStyle}"
+                       Text="{x:Bind ViewModel.Title, Mode=OneWay}" />
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <MediaElement AudioDeviceType="Multimedia"
+                          RealTimePlayback="True">
+                <interactivity:Interaction.Behaviors>
+                    <behaviors:MediaElementBindingBehavior IsLiving="{x:Bind ViewModel.IsLiving, Mode=TwoWay}"
+                                                           MediaStreamSource="{x:Bind ViewModel.MediaStreamSource, Mode=OneWay}" />
+                </interactivity:Interaction.Behaviors>
+            </MediaElement>
         </Grid>
-        <TextBlock Grid.Row="0"
-                   VerticalAlignment="Center"
-                   Padding="58,0,0,0"
-                   Style="{ThemeResource TitleTextBlockStyle}"
-                   Text="{x:Bind ViewModel.Title, Mode=OneWay}" />
-        <Grid Grid.Row="1" />
     </Grid>
 </Page>
