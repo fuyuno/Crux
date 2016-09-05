@@ -9,34 +9,22 @@ using Crux.Helpers;
 using Crux.Services.Interfaces;
 
 using Mntone.Nico2.Live.PlayerStatus;
-using Mntone.Rtmp.Client;
 
 using Prism.Mvvm;
 
 namespace Crux.Models
 {
-    internal class NicoLiveView : BindableBase
+    internal class NicoLivePlayer : BindableBase
     {
         private readonly IAccountService _accountService;
         private readonly string _liveId;
-        private readonly SimpleVideoClient _videoClient;
         private IDisposable _disposable;
 
-        public NicoLiveView(IAccountService accountService, string liveId)
+        public NicoLivePlayer(IAccountService accountService, string liveId)
         {
             _accountService = accountService;
             _liveId = liveId;
-            _videoClient = new SimpleVideoClient();
-            _videoClient.Started += OnStarted;
-            _videoClient.Stopped += OnStopped;
         }
-
-        private void OnStarted(object sender, SimpleVideoClientStartedEventArgs e)
-        {
-            MediaStreamSource = e.MediaStreamSource;
-        }
-
-        private void OnStopped(object sender, SimpleVideoClientStoppedEventArgs e) => Finish();
 
         public void Start() => RunHelper.RunAsync(StartAsync);
 
@@ -46,7 +34,6 @@ namespace Crux.Models
             if (PlayerStatus.Stream.RtmpUrl == null)
                 return; // 入れない。
             // rtmpdump -vr rtmp://{RtmpUrl} -N {StramContents} -C S:{RtmpTicket}
-            await _videoClient.ConnectAsync(PlayerStatus.Stream.RtmpUrl);
             _disposable = Observable.Timer(TimeSpan.Zero, TimeSpan.FromMinutes(1))
                                     .Subscribe(async w =>
                                     {
