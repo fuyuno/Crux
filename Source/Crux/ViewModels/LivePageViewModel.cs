@@ -17,7 +17,7 @@ namespace Crux.ViewModels
     public class LivePageViewModel : ViewModel
     {
         private readonly IAccountService _accountService;
-        private NicoLiveView _nicoLiveView;
+        private NicoLivePlayer _nicoLiveView;
 
         public LivePageViewModel(IAccountService accountService)
         {
@@ -30,7 +30,7 @@ namespace Crux.ViewModels
         public override void OnNavigatedTo(NavigatedToEventArgs e, Dictionary<string, object> viewModelState)
         {
             base.OnNavigatedTo(e, viewModelState);
-            _nicoLiveView = new NicoLiveView(_accountService, e.Parameter.ToString());
+            _nicoLiveView = new NicoLivePlayer(_accountService, e.Parameter.ToString());
             _nicoLiveView.Start();
             _nicoLiveView.ObserveProperty(w => w.PlayerStatus).Where(w => w != null)
                          .ObserveOnUIDispatcher()

@@ -107,6 +107,7 @@
     <Compile Include="Behaviors\MediaElementBindingBehavior.cs" />
     <Compile Include="Collections\IncrementalObservableCollection.cs" />
     <Compile Include="CruxConstants.cs" />
+    <Compile Include="Extensions\Dump.cs" />
     <Compile Include="Helpers\ModelHelper.cs" />
     <Compile Include="Helpers\RunHelper.cs" />
     <Compile Include="Models\AdaptiveSize.cs" />
@@ -114,7 +115,7 @@
     <Compile Include="Models\NicoFavLive.cs" />
     <Compile Include="Models\NicoLive.cs" />
     <Compile Include="Models\LiveSort.cs" />
-    <Compile Include="Models\NicoLiveView.cs" />
+    <Compile Include="Models\NicoLivePlayer.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Mvvm\ViewModel.cs" />
     <Compile Include="Mvvm\ViewModelHelper.cs" />
@@ -212,9 +213,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Extensions\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Page Include="AppShell.xaml">
       <SubType>Designer</SubType>
@@ -290,18 +289,14 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Mntone.Data.Amf">
-      <HintPath>..\..\Assemblies\Mntone.Data.Amf.winmd</HintPath>
-      <IsWinMDFile>True</IsWinMDFile>
-      <Implementation>Mntone.Data.Amf.UWP.dll</Implementation>
-    </Reference>
-    <Reference Include="Mntone.Rtmp">
-      <HintPath>..\..\Assemblies\Mntone.Rtmp.winmd</HintPath>
-      <IsWinMDFile>True</IsWinMDFile>
-      <Implementation>Mntone.Rtmp.UWP.dll</Implementation>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\Corvus\Source\Corvus\Corvus.csproj">
+      <Project>{55d93e03-5817-4ced-9058-9b0d2fc5e3c1}</Project>
+      <Name>Corvus</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Crux.Becrux\Crux.Becrux.csproj">
+      <Project>{87deee94-9011-43f0-9782-916ef4750f22}</Project>
+      <Name>Crux.Becrux</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenNiconico2\Mntone.Nico2\Mntone.Nico2.UWP\Mntone.Nico2.UWP.csproj">
       <Project>{a51b645a-1ae8-43b7-a652-7ee0a82bc97e}</Project>
       <Name>Mntone.Nico2.UWP</Name>

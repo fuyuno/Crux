@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Reactive.Linq;
+using System.Linq;
 using System.Threading.Tasks;
 
 using Windows.Media.Core;
+
+using Corvus.Clients;
 
 using Crux.Helpers;
 using Crux.Services.Interfaces;
@@ -33,13 +35,20 @@ namespace Crux.Models
             PlayerStatus = await _accountService.CurrentContext.Live.GetPlayerStatusAsync(_liveId);
             if (PlayerStatus.Stream.RtmpUrl == null)
                 return; // 入れない。
-            // rtmpdump -vr rtmp://{RtmpUrl} -N {StramContents} -C S:{RtmpTicket}
+
+            var mss = new NicoLiveRtmpClient(new Uri($"{PlayerStatus.Stream.RtmpUrl}/{_liveId}"), PlayerStatus.Stream.Contents.First().Value)
+            {
+                Connection = $"S:{PlayerStatus.Stream.Ticket}"
+            };
+            mss.Connect(); // TODO: Comment-out
+            /*
             _disposable = Observable.Timer(TimeSpan.Zero, TimeSpan.FromMinutes(1))
                                     .Subscribe(async w =>
                                     {
                                         await _accountService.CurrentContext.Live.HeartbeatAsync(_liveId);
                                         Debug.WriteLine("heartbeat");
                                     });
+             */
         }
 
         public void Finish() => RunHelper.RunAsync(FinishAsync);
@@ -63,7 +72,7 @@ namespace Crux.Models
             private set { SetProperty(ref _playerStatus, value); }
         }
 
-        #endregion
+        #endregion PlayerStatus
 
         #region MediaStreamSource
 
@@ -75,6 +84,6 @@ namespace Crux.Models
             private set { SetProperty(ref _mediaStreamSource, value); }
         }
 
-        #endregion
+        #endregion MediaStreamSource
     }
 }
